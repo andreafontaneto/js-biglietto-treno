@@ -44,7 +44,7 @@ console.log('prezzo scontato del 40%',discountPrice40);
 
 
 // utilizzo sconti 20% e 40%
-if(age < 18){
+if(age > 0 && age < 18){
   console.log('in base alle informazioni devi pagare',discountPrice20)+'€';
 
   document.getElementById("ticket").innerHTML =
@@ -58,8 +58,8 @@ if(age < 18){
 
     <p>Quindi il prezzo totale del biglietto è di: <strong>${discountPrice20}</strong></p>
   `
-}else if(age => 65){
-  console.log('in base alle informazioni devi pagare',discount40)+'€';
+}else if(age = 65 || age > 65){
+  console.log('in base alle informazioni devi pagare',discountPrice40)+'€';
 
   document.getElementById("ticket").innerHTML =
   `
@@ -79,6 +79,8 @@ if(age < 18){
   `
     <p>Km da percorrere: ${distance}</p>
     <p>La tua età: ${age}</p>
+
+    <p>NESSUNO SCONTO DISPONIBILE</p>
 
     <p>Il prezzo totale del biglietto è di: <strong>€ ${totalPrice}</strong></p>
   `
