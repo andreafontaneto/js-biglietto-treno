@@ -10,9 +10,76 @@
 
 */
 
-let distance = 5 // da sostituire con prompt
-let age = 15 // da sostituire con prompt
 
-console.log(distance);
-console.log(age);
+// dichiarazione variabili
+let distance = prompt('Quanti km devi percorrere?');
+let age = prompt('Quanti anni hai?');
 
+console.log('distanza',distance);
+console.log('età',age);
+
+
+// prezzo intero del biglietto
+let totalPrice = (distance * 0.21).toFixed(2);
+
+console.log('prezzo totale',totalPrice);
+
+
+// definizione sconti 20% e 40%
+let discount20 = (totalPrice * 20) / 100;
+
+console.log('sconto 20%',discount20);
+
+let discount40 = (totalPrice * 40) / 100;
+
+console.log('sconto 40%',discount40);
+
+
+// calcolo prezzo biglietto con sconto
+let discountPrice20 = (totalPrice - discount20).toFixed(2) + '€';
+let discountPrice40 = (totalPrice - discount40).toFixed(2) + '€';
+
+console.log('prezzo scontato del 20%',discountPrice20);
+console.log('prezzo scontato del 40%',discountPrice40);
+
+
+// utilizzo sconti 20% e 40%
+if(age < 18){
+  console.log('in base alle informazioni devi pagare',discountPrice20)+'€';
+
+  document.getElementById("ticket").innerHTML =
+  `
+    <p>Km da percorrere: ${distance}</p>
+    <p>La tua età: ${age}</p>
+
+    <p>Il prezzo intero del biglietto è di: € ${totalPrice}</p>
+
+    <p>In base alla tua età ti verrà applicato il 20% di sconto pari a € ${discount20}</p>
+
+    <p>Quindi il prezzo totale del biglietto è di: ${discountPrice20}</p>
+  `
+}else if(age => 65){
+  console.log('in base alle informazioni devi pagare',discount40)+'€';
+
+  document.getElementById("ticket").innerHTML =
+  `
+    <p>Km da percorrere: ${distance}</p>
+    <p>La tua età: ${age}</p>
+
+    <p>Il prezzo intero del biglietto è di: € ${totalPrice}</p>
+
+    <p>In base alla tua età ti verrà applicato il 40% di sconto pari a € ${discount40}</p>
+
+    <p>Quindi il prezzo totale del biglietto è di: ${discountPrice40}</p>
+  `
+}else{
+  console.log('in base alle informazioni devi pagare',totalPrice)+'€';
+
+  document.getElementById("ticket").innerHTML =
+  `
+    <p>Km da percorrere: ${distance}</p>
+    <p>La tua età: ${age}</p>
+
+    <p>Il prezzo totale del biglietto è di: € ${totalPrice}</p>
+  `
+}
