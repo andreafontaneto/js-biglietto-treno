@@ -56,7 +56,7 @@ if(age < 18){
 
     <p>In base alla tua età ti verrà applicato il 20% di sconto pari a € ${discount20}</p>
 
-    <p>Quindi il prezzo totale del biglietto è di: ${discountPrice20}</p>
+    <p>Quindi il prezzo totale del biglietto è di: <strong>${discountPrice20}</strong></p>
   `
 }else if(age => 65){
   console.log('in base alle informazioni devi pagare',discount40)+'€';
@@ -70,7 +70,7 @@ if(age < 18){
 
     <p>In base alla tua età ti verrà applicato il 40% di sconto pari a € ${discount40}</p>
 
-    <p>Quindi il prezzo totale del biglietto è di: ${discountPrice40}</p>
+    <p>Quindi il prezzo totale del biglietto è di: <strong>${discountPrice40}</strong></p>
   `
 }else{
   console.log('in base alle informazioni devi pagare',totalPrice)+'€';
@@ -80,6 +80,27 @@ if(age < 18){
     <p>Km da percorrere: ${distance}</p>
     <p>La tua età: ${age}</p>
 
-    <p>Il prezzo totale del biglietto è di: € ${totalPrice}</p>
+    <p>Il prezzo totale del biglietto è di: <strong>€ ${totalPrice}</strong></p>
   `
+}
+
+// BONUS //
+
+// controllo della validità
+let validTicket = true;
+let errorMsg = '';
+
+if(isNaN(distance) && isNaN(age)){
+  validTicket = false;
+  errorMsg = 'Inserire i dati in modo corretto';
+}else if(isNaN(distance)){
+  validTicket = false;
+  errorMsg = 'Inserire una distanza valida';
+}else if(isNaN(age)){
+  validTicket = false;
+  errorMsg = 'Inserire un\'età valida';
+}
+
+if(!validTicket){
+  document.getElementById('ticket').innerHTML = "Errore! " + errorMsg;
 }
